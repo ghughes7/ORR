@@ -8,6 +8,7 @@ public class menuButtons : MonoBehaviour {
 	public Canvas ConstructionScreen;
 	public Canvas UndergroundScreen;
 	public Canvas EscapeScreen;
+	public Canvas End;
 	
 	public Canvas CFirstElementScreen;
 	public Canvas CSecondElementScreen;
@@ -52,6 +53,11 @@ public class menuButtons : MonoBehaviour {
 	public Button CFourthElementBButton;
 	public Button CFourthElementCButton;
 	public Button CFourthElementDButton;
+
+	public Text CText1;
+	public Text CText2;
+	public Text CText3;
+	public Text CText4;
 	
 	// Use this for initialization
 	void Start () {
@@ -59,6 +65,7 @@ public class menuButtons : MonoBehaviour {
 		ConstructionScreen = ConstructionScreen.GetComponent<Canvas> ();
 		UndergroundScreen  = UndergroundScreen.GetComponent<Canvas> ();
 		EscapeScreen       = EscapeScreen.GetComponent<Canvas> ();
+		End                = End.GetComponent<Canvas> ();
 		
 		ConstructionButton = ConstructionButton.GetComponent<Button> ();
 		UndergroundButton  = UndergroundButton.GetComponent<Button> ();
@@ -103,11 +110,17 @@ public class menuButtons : MonoBehaviour {
 		CFourthElementBButton = CFourthElementBButton.GetComponent<Button> ();
 		CFourthElementCButton = CFourthElementCButton.GetComponent<Button> ();
 		CFourthElementDButton = CFourthElementDButton.GetComponent<Button> ();
+
+		CText1 = CText1.GetComponent<Text> ();
+		CText2 = CText2.GetComponent<Text> ();
+		CText3 = CText3.GetComponent<Text> ();
+		CText4 = CText4.GetComponent<Text> ();
 		
 		FirstScreen.enabled        = true;
 		ConstructionScreen.enabled = false;
 		UndergroundScreen.enabled  = false;
 		EscapeScreen.enabled       = false;
+		End.enabled 			   = false;
 		
 		ConstructionButton.enabled = true;
 		UndergroundButton.enabled  = true;
@@ -152,6 +165,11 @@ public class menuButtons : MonoBehaviour {
 		CFourthElementBButton.enabled = false;
 		CFourthElementCButton.enabled = false;
 		CFourthElementDButton.enabled = false;
+
+		CText1.enabled = false;
+		CText2.enabled = false;
+		CText3.enabled = false;
+		CText4.enabled = false;
 	}
 	
 	public void ConstructionScreenPress()
@@ -186,6 +204,7 @@ public class menuButtons : MonoBehaviour {
 	
 	public void CFirstElementPicked()
 	{
+		CText1.enabled = true;
 		CFirstElementScreen.enabled = false;
 		CFirstElementAButton.enabled = false;
 		CFirstElementBButton.enabled = false;
@@ -201,6 +220,8 @@ public class menuButtons : MonoBehaviour {
 	
 	public void CSecondElementPicked()
 	{
+		CText1.enabled = false;
+		CText2.enabled = true;
 		CSecondElementScreen.enabled = false;
 		CSecondElementAButton.enabled = false;
 		CSecondElementBButton.enabled = false;
@@ -216,6 +237,8 @@ public class menuButtons : MonoBehaviour {
 	
 	public void CThirdElementPicked()
 	{
+		CText2.enabled = false;
+		CText3.enabled = true;
 		CThirdElementScreen.enabled = false;
 		CThirdElementAButton.enabled = false;
 		CThirdElementBButton.enabled = false;
@@ -231,11 +254,15 @@ public class menuButtons : MonoBehaviour {
 	
 	public void CFourthElementPicked()
 	{
+		CText3.enabled = false;
+		CText4.enabled = true;
 		CFourthElementScreen.enabled = false;
 		CFourthElementAButton.enabled = false;
 		CFourthElementBButton.enabled = false;
 		CFourthElementCButton.enabled = false;
 		CFourthElementDButton.enabled = false;
+
+		End.enabled = true;
 	}
 	
 }
