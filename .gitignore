@@ -21,7 +21,7 @@
 sysinfo.txt
 
 # Mac OSX git ignore files
-.DS_Store.DS_Store
+.DS_Store
 .AppleDouble
 .LSOverride
 
