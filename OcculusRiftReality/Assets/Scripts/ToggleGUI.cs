@@ -18,3 +18,4 @@ public class ToggleGUI : MonoBehaviour {
 			c.enabled = false;
 	}
 }
+}

@@ -5803,6 +5803,7 @@ GameObject:
   - 4: {fileID: 687941205}
   - 33: {fileID: 687941207}
   - 23: {fileID: 687941206}
+  - 65: {fileID: 687941208}
   m_Layer: 0
   m_Name: selection_screen_2
   m_TagString: Untagged
@@ -5856,6 +5857,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 687941204}
   m_Mesh: {fileID: 4300688, guid: 2406a7cda1fb8ec42bc7b4593a564dc7, type: 3}
+--- !u!65 &687941208
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 687941204}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25445187, y: 3.71324134, z: 1.24776852}
+  m_Center: {x: .173813626, y: 1.85662043, z: -2.22717632e-23}
 --- !u!1 &693917174
 GameObject:
   m_ObjectHideFlags: 0

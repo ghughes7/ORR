@@ -23,11 +23,16 @@ public class MouseListener : MonoBehaviour {
 				{
 //					Renderer rend = GetComponent<Renderer>(); 
 //					rend.enabled = false;
-//					print("sucess");
+					print("sucess");
 					GameObject screen1 = GameObject.Find("FirstScreen");
 					Canvas canvas = screen1.GetComponent<Canvas>();
 					canvas.enabled = true;
 	
+				}
+				if (hit.collider.name == "selection_screen_2")
+				{
+				
+
 				}
 //				print (hit.collider.name);
 
