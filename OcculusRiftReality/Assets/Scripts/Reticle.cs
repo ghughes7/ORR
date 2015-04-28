@@ -1,15 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class Reticle : MonoBehaviour {
 
 	public Camera cameraFacing;
 	private Vector3 originalScale;
+	public GameObject player;
+
+	//nasty global vars
+	public static Vector3 playerPosition = new Vector3(0.495f, 2.672f, -18.0f); //this should only happen once
+	public static Quaternion playerRotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
 
 	// Use this for initialization
 	void Start () {
-		Cursor.visible = false;
+//		Cursor.visible = false;
 		originalScale = transform.localScale;
+		player = GameObject.Find ("OVRPlayerController");
+		player.transform.position = playerPosition;
+		player.transform.rotation = playerRotation;
+
 	}
 	
 	// Update is called once per frame
@@ -27,8 +37,12 @@ public class Reticle : MonoBehaviour {
 			if (hit.collider.name == "selection_screen_1"){
 //				print ("success");
 				GameObject temp = GameObject.Find("selection_screen_1");
-				Renderer rend = temp.GetComponent<Renderer>();
-				rend.enabled = false;
+//				Renderer rend = temp.GetComponent<Renderer>();
+//				rend.enabled = false;
+				Application.LoadLevel (1);
+				//Keep track of player's coords
+				playerPosition = player.transform.position;
+				playerRotation = player.transform.rotation;
 			}
 		}
 
