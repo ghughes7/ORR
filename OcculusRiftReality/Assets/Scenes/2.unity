@@ -1110,7 +1110,7 @@ MonoBehaviour:
   containerImage: {fileID: 1161611646}
   receivingImage: {fileID: 695465771}
   highlightColor: {r: 1, g: 1, b: 0, a: 1}
---- !u!20 &759682596
+--- !u!20 &759682596 stripped
 Camera:
   m_PrefabParentObject: {fileID: 2000000, guid: 7461a7b0cf97947fd9b9e4502fd2d07b,
     type: 2}
@@ -2189,8 +2189,8 @@ MonoBehaviour:
   Loop: {fileID: 1988158548}
   Drop: {fileID: 1740219189}
   Pretzel: {fileID: 1194704065}
-  Twist: {fileID: 93313324}
-  Screw: {fileID: 568714909}
+  Screw: {fileID: 93313324}
+  Spiral: {fileID: 568714909}
   Cobra: {fileID: 1907487633}
 --- !u!1 &1737773662
 GameObject:

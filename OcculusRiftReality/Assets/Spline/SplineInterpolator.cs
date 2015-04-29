@@ -190,9 +190,10 @@ public class SplineInterpolator : MonoBehaviour
 		}
 		else
 		{
-/*			transform.GetComponent<SplineController>().sple = ApplicationModel.splineLevel;
-*/
-			transform.GetComponent<SplineController>().sple = 1;
+			transform.GetComponent<SplineController>().sple = ApplicationModel.splineLevel;
+			Debug.Log("here");
+			Debug.Log (ApplicationModel.splineLevel);
+//			transform.GetComponent<SplineController>().sple = 1;
 			transform.GetComponent<SplineController>().Start();
 		}
 	}

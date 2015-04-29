@@ -21,8 +21,8 @@ namespace AssemblyCSharp
 		public Image Loop;
 		public Image Drop;
 		public Image Pretzel;
-		public Image Twist;
 		public Image Screw;
+		public Image Spiral;
 		public Image Cobra;
 
 
@@ -34,19 +34,25 @@ namespace AssemblyCSharp
 		}
 		public void NextLevelButton (int index)
 		{
-			Debug.Log(partOne.overrideSprite);
-			if( partOne.overrideSprite == Loop.sprite && partTwo.overrideSprite == Twist.sprite && partThree.overrideSprite == Screw )
+			if(partOne != null)
 			{
-				ApplicationModel.splineLevel = 1;
-				Debug.Log("yes");
-			}
-			else if( partOne.overrideSprite == Loop.sprite && partTwo.overrideSprite == Twist.sprite && partThree.overrideSprite == Screw )
-			{
-				ApplicationModel.splineLevel = 2;
+				Debug.Log(partThree.overrideSprite);
+				Debug.Log (Spiral.sprite);
+				Debug.Log (partThree.overrideSprite == Spiral.sprite);
+				if( partOne.overrideSprite == Loop.sprite && partTwo.overrideSprite == Spiral.sprite && partThree.overrideSprite == Screw.sprite )
+				{
+					ApplicationModel.splineLevel = 1;
+					//Debug.Log("yes");
+				}
+				else if( partOne.overrideSprite == Loop.sprite && partThree.overrideSprite == Drop.sprite && partTwo.overrideSprite == Screw.sprite )
+				{
+					//Debug.Log ("er");
+					ApplicationModel.splineLevel = 2;
+				}
 			}
 
-/*			Application.LoadLevel (index);
-*/		}
+			Application.LoadLevel (index);
+		}
 		public void NextLevelButton (string levelName)
 		{
 			Application.LoadLevel (levelName);

@@ -14,7 +14,7 @@ public class Reticle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-//		Cursor.visible = false;
+		Cursor.visible = false;
 		originalScale = transform.localScale;
 		player = GameObject.Find ("OVRPlayerController");
 		player.transform.position = playerPosition;
@@ -40,15 +40,28 @@ public class Reticle : MonoBehaviour {
 //				Renderer rend = temp.GetComponent<Renderer>();
 //				rend.enabled = false;
 				Application.LoadLevel (1);
+				Cursor.visible = true;
 				//Keep track of player's coords
 				playerPosition = player.transform.position;
 				playerRotation = player.transform.rotation;
 			}
+			else if (hit.collider.name == "splineVehicle")
+			{
+				//Debug.Log(ApplicationModel.splineLevel);
+				player.GetComponent<SplineInterpolator>().enabled = true;
+				player.GetComponent<SplineController>().enabled = true;
+				player.GetComponent<OVRPlayerController>().HmdResetsY = false;
+				player.GetComponent<OVRPlayerController>().HmdRotatesY = false;
+				this.GetComponent<Renderer>().enabled = false;
+//				SplineController spple = new SplineController();
+//				spple.Start ();
+				print ("got it");
+			}
 		}
 
 
-		transform.LookAt (cameraFacing.transform.position);
-		transform.Rotate (0.0f, 180.0f, 0.0f);
+		transform.LookAt (cameraFacing.transform, cameraFacing.transform.position);
+		transform.Rotate (new Vector3(0.0f, 180.0f, 0.0f));
 		transform.position = cameraFacing.transform.position + 
 			cameraFacing.transform.rotation * Vector3.forward * dist;
 		transform.localScale = originalScale * dist;
