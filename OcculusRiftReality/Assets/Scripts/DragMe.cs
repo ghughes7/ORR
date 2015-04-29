@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Image))]
 public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -9,6 +11,12 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 	
 	private GameObject m_DraggingIcon;
 	private RectTransform m_DraggingPlane;
+	private List<Sprite> images;
+
+	void Start()
+	{
+		images = new List<Sprite>();
+	}
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
@@ -30,6 +38,7 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 		group.blocksRaycasts = false;
 
 		image.sprite = GetComponent<Image>().sprite;
+		images.Add(image.sprite);
 		image.SetNativeSize();
 		
 		if (dragOnSurfaces)

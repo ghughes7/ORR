@@ -9,6 +9,7 @@ public delegate void OnEndCallback();
 public class SplineInterpolator : MonoBehaviour
 {
 	eEndPointsMode mEndPointsMode = eEndPointsMode.AUTO;
+	private int splineRoot;
 
 	internal class SplineNode
 	{
@@ -34,8 +35,9 @@ public class SplineInterpolator : MonoBehaviour
 		Reset();
 	}
 
-	public void StartInterpolation(OnEndCallback endCallback, bool bRotations, eWrapMode mode)
+	public void StartInterpolation(OnEndCallback endCallback, bool bRotations, eWrapMode mode, int splineLevel )
 	{
+		splineRoot = splineLevel;
 		if (mState != "Reset")
 			throw new System.Exception("First reset, add points and then call here");
 
@@ -185,6 +187,13 @@ public class SplineInterpolator : MonoBehaviour
 			{
 				transform.rotation = GetSquad(mCurrentIdx, param);
 			}
+		}
+		else
+		{
+/*			transform.GetComponent<SplineController>().sple = ApplicationModel.splineLevel;
+*/
+			transform.GetComponent<SplineController>().sple = 1;
+			transform.GetComponent<SplineController>().Start();
 		}
 	}
 

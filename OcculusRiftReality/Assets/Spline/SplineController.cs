@@ -9,12 +9,17 @@ public enum eOrientationMode { NODE = 0, TANGENT }
 public class SplineController : MonoBehaviour
 {
 	public GameObject SplineRoot;
+	public GameObject RC0;
+	public GameObject RC1;
+	public GameObject RC2;
+	public GameObject Tube;
 	public float Duration = 10;
 	public eOrientationMode OrientationMode = eOrientationMode.NODE;
 	public eWrapMode WrapMode = eWrapMode.ONCE;
 	public bool AutoStart = true;
 	public bool AutoClose = true;
 	public bool HideOnExecute = true;
+	public int sple = 0;
 
 
 	SplineInterpolator mSplineInterp;
@@ -29,7 +34,7 @@ public class SplineController : MonoBehaviour
 
 		SplineInterpolator interp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
 		SetupSplineInterpolator(interp, trans);
-		interp.StartInterpolation(null, false, WrapMode);
+		interp.StartInterpolation(null, false, WrapMode, ApplicationModel.splineLevel);
 
 
 		Vector3 prevPos = trans[0].position;
@@ -45,10 +50,28 @@ public class SplineController : MonoBehaviour
 	}
 
 
-	void Start()
+	public void Start()
 	{
-		mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
+		if( sple == 1 )
+		{
+			SplineRoot = RC1;
+			AutoStart = true;
+		}
+		else if( sple == 2 )
+		{
+			SplineRoot = RC2;
+			AutoStart = true;
+		}
+		else if( sple == 0 )
+		{
+			SplineRoot = Tube;
+		}
+		else
+		{
+			SplineRoot = RC0;
+		}
 
+		mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
 		mTransforms = GetTransforms();
 
 		if (HideOnExecute)
@@ -119,7 +142,8 @@ public class SplineController : MonoBehaviour
 		if (mTransforms.Length > 0)
 		{
 			SetupSplineInterpolator(mSplineInterp, mTransforms);
-			mSplineInterp.StartInterpolation(null, true, WrapMode);
+			mSplineInterp.StartInterpolation(null, true, WrapMode, ApplicationModel.splineLevel);
 		}
+		Debug.Log("End");
 	}
 }

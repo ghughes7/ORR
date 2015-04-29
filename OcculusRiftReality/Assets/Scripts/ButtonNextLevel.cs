@@ -9,14 +9,44 @@
 // ------------------------------------------------------------------------------
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 namespace AssemblyCSharp
 {
 	public class ButtonNextLevel: MonoBehaviour
 	{
+		public Image partOne;
+		public Image partTwo;
+		public Image partThree;
+
+		public Image Loop;
+		public Image Drop;
+		public Image Pretzel;
+		public Image Twist;
+		public Image Screw;
+		public Image Cobra;
+
+
+		void Start()
+		{
+			partOne   = partOne.GetComponent<Image>();
+			partTwo   = partTwo.GetComponent<Image>();
+			partThree = partThree.GetComponent<Image>();
+		}
 		public void NextLevelButton (int index)
 		{
-			Application.LoadLevel (index);
-		}
+			Debug.Log(partOne.overrideSprite);
+			if( partOne.overrideSprite == Loop.sprite && partTwo.overrideSprite == Twist.sprite && partThree.overrideSprite == Screw )
+			{
+				ApplicationModel.splineLevel = 1;
+				Debug.Log("yes");
+			}
+			else if( partOne.overrideSprite == Loop.sprite && partTwo.overrideSprite == Twist.sprite && partThree.overrideSprite == Screw )
+			{
+				ApplicationModel.splineLevel = 2;
+			}
+
+/*			Application.LoadLevel (index);
+*/		}
 		public void NextLevelButton (string levelName)
 		{
 			Application.LoadLevel (levelName);
